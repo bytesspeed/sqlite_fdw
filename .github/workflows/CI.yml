@@ -9,7 +9,7 @@ on:
       - main
 jobs:
   detect-pgversion:
-    runs-on: ubuntu-22.04
+    runs-on: macos-latest
     outputs:
       pgversion: ${{ steps.detect-pgversion.outputs.targets }}
     steps:
@@ -44,8 +44,7 @@ jobs:
       - name: set_proxy
         run: bash GitHubActions/env.sh
 
-      - name: install locales
-        run: bash GitHubActions/install_locales.sh
+      
             
       - name: build PostgreSQL ${{ matrix.pg }}
         run: bash GitHubActions/build_postgres.sh ${{ matrix.pg }}
