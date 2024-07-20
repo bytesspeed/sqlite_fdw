@@ -34,7 +34,7 @@ jobs:
         pg: ${{ fromJSON(needs.detect-pgversion.outputs.pgversion) }}
         
     name: Test on PostgreSQL ${{ matrix.pg }}
-    runs-on: ubuntu-22.04
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
       
@@ -63,7 +63,7 @@ jobs:
         with:
           name: ${{ matrix.pg }}-fdw
           path: |
-            workdir/postgresql-${{ matrix.pg }}/contrib/sqlite_fdw
+            workdir/
           retention-days: 7
       - name: download output files (regression.diffs)
         if: failure()
